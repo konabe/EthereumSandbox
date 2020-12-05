@@ -23,13 +23,18 @@
     </div>
   </div>
 
-  <div v-else>Loading...</div>
+  <div v-else>
+    <b-notification v-model="isActive" type="is-danger" aria-close-label="Close notification">
+      Drizzleの初期化ができていません
+    </b-notification></div>
+
 </template>
 
 <script>
 import TutorialToken from './TutorialToken'
 import SimpleStorage from './SimpleStorage'
 import ComplexStorage from './ComplexStorage'
+
 import { mapGetters } from 'vuex'
 
 export default {
