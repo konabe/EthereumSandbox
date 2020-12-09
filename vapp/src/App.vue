@@ -1,39 +1,43 @@
 <template>
-  <div v-if="isDrizzleInitialized" id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+  <section class="section">
+    <div class="container">
 
-    <div class="section">
-      <h2>Show the Accounts</h2>
-      <drizzle-account units="Ether" :precision="2" />
+      <div class="container">
+        <img src="./assets/drizzle-logo.png" />
+        <img src="./assets/logo.png" />
+      </div>
+
+      <div class="container" v-if="isDrizzleInitialized" id="app">
+        
+        <AccountInfo />
+
+        <div class="container">
+          <h2>Tutorial Token</h2>
+          <TutorialToken />
+        </div>
+
+        <div class="container">
+          <h2>Simple Storage</h2>
+          <SimpleStorage />
+        </div>
+
+        <div class="container">
+          <h2>Complex Storage</h2>
+          <ComplexStorage />
+        </div>
+
+      </div>
+      
     </div>
-
-    <div class="section">
-      <h2>Tutorial Token</h2>
-      <TutorialToken />
-    </div>
-
-    <div class="section">
-      <h2>Simple Storage</h2>
-      <SimpleStorage />
-    </div>
-
-    <div class="section">
-      <h2>Complex Storage</h2>
-      <ComplexStorage />
-    </div>
-  </div>
-
-  <div v-else>
-    <b-notification v-model="isActive" type="is-danger" aria-close-label="Close notification">
-      Drizzleの初期化ができていません
-    </b-notification></div>
-
+  </section>
 </template>
 
 <script>
 import TutorialToken from './TutorialToken'
 import SimpleStorage from './SimpleStorage'
 import ComplexStorage from './ComplexStorage'
+
+import AccountInfo from './components/AccountInfo';
 
 import { mapGetters } from 'vuex'
 
@@ -42,7 +46,8 @@ export default {
   components: {
     ComplexStorage,
     TutorialToken,
-    SimpleStorage
+    SimpleStorage,
+    AccountInfo
   },
 
   computed: mapGetters('drizzle', ['isDrizzleInitialized'])
@@ -50,12 +55,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "../node_modules/bulma/bulma.sass";
 </style>
