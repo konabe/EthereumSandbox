@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container py-6" v-if="isDrizzleInitialized">
     <h1 class="title">Show the Accounts</h1>
     <div class="columns is-mobile">
 
@@ -8,8 +8,14 @@
           <div class="message-header">
             drizzle-account component
           </div>
+          
           <div class="message-body">
-            <drizzle-account units="Ether" :precision="2" />
+            <div class="container py-2">
+              <drizzle-account units="Ether" :precision="2" />
+              <span class="is-size-7">
+                units="TutorialToken" , method="balanceOf" , label="Your Balance", :methodArgs="{{accounts}}"
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -24,7 +30,7 @@
               <strong>activeAcount</strong> is {{activeAccount}}
             </div>
             <div>
-              <strong>activeBalance</strong> is {{activeBalance}}
+              <strong>activeBalance</strong> is {{drizzleInstance.web3.utils.fromWei(activeBalance)}}
             </div>
           </div>
         </div>
@@ -42,8 +48,8 @@ export default {
   name: 'AccountInfo',
  
   computed: {
-    ...mapGetters('drizzle', ['drizzleInstance']),
-    ...mapGetters('accounts', ['activeAccount', 'activeBalance'])
+    ...mapGetters('drizzle', ['drizzleInstance', 'isDrizzleInitialized']),
+    ...mapGetters('accounts', ['activeAccount', 'activeBalance']),
   }
 }
 </script>

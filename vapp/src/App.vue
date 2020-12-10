@@ -8,34 +8,20 @@
       </div>
 
       <div class="container" v-if="isDrizzleInitialized" id="app">
-        
         <AccountInfo />
-
-        <div class="container">
-          <h2>Tutorial Token</h2>
-          <TutorialToken />
-        </div>
-
-        <div class="container">
-          <h2>Simple Storage</h2>
-          <SimpleStorage />
-        </div>
-
-        <div class="container">
-          <h2>Complex Storage</h2>
-          <ComplexStorage />
-        </div>
-
+        <TutorialToken />
+        <SimpleStorage />
+        <ComplexStorage />
       </div>
-      
+
     </div>
   </section>
 </template>
 
 <script>
-import TutorialToken from './TutorialToken'
-import SimpleStorage from './SimpleStorage'
-import ComplexStorage from './ComplexStorage'
+import TutorialToken from './components/TutorialToken'
+import SimpleStorage from './components/SimpleStorage'
+import ComplexStorage from './components/ComplexStorage'
 
 import AccountInfo from './components/AccountInfo';
 
